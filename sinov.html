@@ -306,6 +306,32 @@ dd{margin:0;font-weight:600;font-size:14.5px;text-align:right}
 .ltest b{display:block;margin-bottom:4px;color:var(--gold);letter-spacing:.08em;font-size:11.5px}
 .ltest pre{margin:8px 0 0;white-space:pre-wrap;font-family:ui-monospace,Menlo,monospace;
   font-size:12px;line-height:1.55;color:var(--ink)}
+/* qo'ng'iroq */
+.lbar{gap:10px}
+.lcall{display:flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;
+  background:var(--bg);color:var(--ink);border:1.5px solid var(--ink);font-weight:700;
+  font-size:14.5px;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,.16);white-space:nowrap;
+  transition:background .2s,color .2s}
+.lcall:hover{background:var(--ink);color:var(--bg)}
+.lcall svg{flex:none}
+.lcall .m{display:none}
+@media(max-width:699px){
+  .lcall{padding:14px;box-shadow:none;font-size:15px}
+  .lcall .m{display:inline}.lcall .d{display:none}
+}
+@media(max-width:359px){.lcall .m{display:none}}
+.lnum{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;
+  border:1px solid var(--line);margin-bottom:10px;color:var(--ink);text-decoration:none}
+.lnum:hover{border-color:var(--ink)}
+.lnum b{display:block;font-size:15px}
+.lnum i{display:block;font-style:normal;color:var(--soft);font-size:14px;margin-top:3px}
+.lnum svg{color:var(--gold);flex:none;width:24px;height:24px}
+.lalt{font-size:13px;text-align:center;margin:14px 0 0;color:var(--soft)}
+.lalt a{color:var(--ink);font-weight:700}
+.ltoast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);opacity:0;z-index:70;
+  background:var(--ink);color:var(--bg);padding:12px 16px;font-size:13.5px;line-height:1.45;
+  max-width:calc(100% - 32px);transition:all .25s;pointer-events:none;text-align:center}
+.ltoast.on{opacity:1;transform:translate(-50%,0)}
 </style></head><body>
 
 <header class="hero" id="hero">
@@ -730,9 +756,9 @@ if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
 
 render();paintSel();fromHash();
 </script>
-<div class="lbar" id="lbar"><button class="lbtn" id="lbtn" type="button">Ariza qoldirish <span class="ar">&rarr;</span></button></div>
+<div class="lbar" id="lbar"><a class="lcall" id="lcall" href="#" aria-label="Qo'ng'iroq qilish"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="m">Qo'ng'iroq</span><span class="d">Qo'ng'iroq qilish</span></a><button class="lbtn" id="lbtn" type="button">Ariza qoldirish <span class="ar">&rarr;</span></button></div>
 <div class="lead" id="lead" role="dialog" aria-modal="true" aria-labelledby="lh"><div class="lw" id="lw"></div></div>
-<script>window.LEAD_CFG={"endpoint": "", "pixel": "", "viloyatlar": ["Toshkent shahri", "Toshkent viloyati", "Andijon viloyati", "Buxoro viloyati", "Farg'ona viloyati", "Jizzax viloyati", "Xorazm viloyati", "Namangan viloyati", "Navoiy viloyati", "Qashqadaryo viloyati", "Samarqand viloyati", "Sirdaryo viloyati", "Surxondaryo viloyati", "Qoraqalpog'iston Respublikasi"], "xonalar": ["Vannaxona", "Oshxona", "Zal", "Koridor", "Hovli", "Tijorat obyekti"]};</script>
+<script>window.LEAD_CFG={"endpoint": "", "pixel": "", "tel": [], "phoneSvg": "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z\"/></svg>", "viloyatlar": ["Toshkent shahri", "Toshkent viloyati", "Andijon viloyati", "Buxoro viloyati", "Farg'ona viloyati", "Jizzax viloyati", "Xorazm viloyati", "Namangan viloyati", "Navoiy viloyati", "Qashqadaryo viloyati", "Samarqand viloyati", "Sirdaryo viloyati", "Surxondaryo viloyati", "Qoraqalpog'iston Respublikasi"], "xonalar": ["Vannaxona", "Oshxona", "Zal", "Koridor", "Hovli", "Tijorat obyekti"]};</script>
 <script>
 (function(){
 const C=window.LEAD_CFG||{};
@@ -767,6 +793,24 @@ if(C.pixel){
   fbq('init',C.pixel);fbq('track','PageView');
 }
 const px=(ev,d)=>{try{if(window.fbq)fbq('track',ev,d||{});}catch(e){}};
+
+/* --- qo'ng'iroq raqamlari --- */
+const PHONE=C.phoneSvg||'';
+const NUMS=(C.tel||[]).map(t=>{
+  const d=String((t&&t.raqam)||t).replace(/\D/g,'');
+  return {nom:(t&&t.nom)||'',d:d,href:'tel:+'+d,
+    show:'+'+d.slice(0,3)+' '+d.slice(3,5)+' '+d.slice(5,8)+' '+d.slice(8,10)+' '+d.slice(10,12)};
+}).filter(n=>n.d.length===12);
+function toast(t){let el=document.getElementById('ltoast');
+  if(!el){el=document.createElement('div');el.id='ltoast';el.className='ltoast';document.body.appendChild(el);}
+  el.textContent=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),2800);}
+function callTrack(n){
+  px('Contact',{content_name:'Qo\'ng\'iroq'});
+  if(C.endpoint&&navigator.sendBeacon){try{navigator.sendBeacon(C.endpoint,JSON.stringify({
+    tur:'qongiroq',nom:n.nom,raqam:n.show,
+    plita:(det.classList.contains('on')&&cur)?cur.kod:'',
+    manba:SRC.s||"to'g'ridan-to'g'ri",kampaniya:SRC.c||''}));}catch(e){}}
+}
 
 /* --- tanlangan plitalar --- */
 function items(){
@@ -823,7 +867,24 @@ function formHTML(){
   '<button class="lgo" id="lgo" type="submit">Yuborish</button>'+
   '<div class="lerr" id="lerr"></div>'+
   '<p class="lcon">«Yuborish» tugmasini bosib, ko\'rsatilgan raqam orqali siz bilan bog\'lanishimizga rozilik bildirasiz.</p>'+
-  '</form>';
+  '</form>'+
+  (NUMS.length||!C.endpoint?'<p class="lalt">Shoshilinchmi? <a href="'+(NUMS.length===1?NUMS[0].href:'#')+
+    '" data-c="1">Hoziroq qo\'ng\'iroq qiling'+(NUMS.length===1?' — '+NUMS[0].show:'')+'</a></p>':'');
+}
+function openCall(){
+  LW.innerHTML='<button class="lx" data-l="x" type="button" aria-label="Yopish">&times;</button>'+
+    '<h3 class="serif" id="lh">Qo\'ng\'iroq qilish</h3>'+
+    '<p class="ls">Qulay raqamni tanlang — mutaxassisimiz javob beradi.</p>'+
+    NUMS.map((n,i)=>'<a class="lnum" href="'+n.href+'" data-n="'+i+'"><span><b>'+
+      esc(n.nom||'Qo\'ng\'iroq')+'</b><i>'+n.show+'</i></span>'+PHONE+'</a>').join('');
+  LW.scrollTop=0;
+  if(!L.classList.contains('on')){L.classList.add('on');requestAnimationFrame(()=>L.classList.add('vis'));}
+  document.body.style.overflow='hidden';
+}
+function callClick(e){
+  if(!NUMS.length){e.preventDefault();toast('Sinov rejimi: bu tugmaga kompaniya raqami qo\'yiladi');return;}
+  if(NUMS.length>1){e.preventDefault();openCall();return;}
+  callTrack(NUMS[0]);
 }
 function openLead(){
   LW.innerHTML=formHTML();LW.scrollTop=0;
@@ -840,6 +901,10 @@ window.openLead=openLead;
 
 L.addEventListener('click',e=>{
   if(e.target===L){closeLead();return;}
+  const nn=e.target.closest('[data-n]');
+  if(nn){callTrack(NUMS[+nn.dataset.n]);return;}
+  const cc=e.target.closest('[data-c]');
+  if(cc){callClick(e);return;}
   const a=e.target.closest('[data-l]');
   if(a){const k=a.dataset.l;
     if(k==='x'||k==='back')closeLead();
@@ -913,6 +978,12 @@ async function send(){
 
 /* --- tugmalar --- */
 document.getElementById('lbtn').onclick=()=>{if(det.classList.contains('on'))addCur();openLead();};
+const CB=document.getElementById('lcall');
+if(!NUMS.length&&C.endpoint){CB.style.display='none';}
+else{
+  if(NUMS.length===1){CB.href=NUMS[0].href;CB.querySelector('.d').textContent=NUMS[0].show;}
+  CB.addEventListener('click',callClick);
+}
 const prow=document.querySelector('#panel .prow');
 if(prow){const b=document.createElement('button');b.type='button';b.className='lpq';
   b.textContent='Shu plitalarga ariza qoldirish';
