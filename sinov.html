@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uz"><head><meta name="robots" content="noindex"><meta charset="utf-8">
+<html lang="uz"><head><meta name="robots" content="noindex"><script>(function(){try{var x=new URLSearchParams(location.search).get('xodim');if(x==='1')localStorage.setItem('kafel_xodim','1');if(x==='0')localStorage.removeItem('kafel_xodim');if(localStorage.getItem('kafel_xodim')==='1')document.documentElement.classList.add('xodim');}catch(e){}})();</script><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RABOSA concept — Keramik plita katalogi</title>
 <meta name="theme-color" content="#18181a">
@@ -218,6 +218,9 @@ dd{margin:0;font-weight:600;font-size:14.5px;text-align:right}
 .foot .in{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
+.hero .bg{transform:scale(1.02)}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.08)}}
+
 /* ===== Ariza (lead) ===== */
 .lbar{position:fixed;left:20px;bottom:20px;z-index:46;display:flex}
 .lbtn{background:var(--gold);color:#18181a;border:0;padding:14px 22px;font:inherit;font-weight:700;
@@ -229,11 +232,12 @@ dd{margin:0;font-weight:600;font-size:14.5px;text-align:right}
   .lbar{left:0;right:0;bottom:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
     background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.08)}
   .lbtn{flex:1;justify-content:center;padding:15px 18px;font-size:15.5px;box-shadow:none}
-  .fab{bottom:84px;right:14px}
-  .inst{bottom:84px}
-  body{padding-bottom:78px}
-  .dwrap{padding-bottom:96px}
+  html:not(.xodim) .fab{bottom:84px;right:14px}
+  html:not(.xodim) .inst{bottom:84px}
+  html:not(.xodim) body{padding-bottom:78px}
+  html:not(.xodim) .dwrap{padding-bottom:96px}
 }
+.xodim .lbar,.xodim .lq,.xodim .lpq{display:none!important}
 .lq{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:18px;
   padding:15px 18px;background:var(--gold);color:#18181a;border:0;font:inherit;font-weight:700;
   font-size:15px;cursor:pointer}
@@ -286,6 +290,7 @@ dd{margin:0;font-weight:600;font-size:14.5px;text-align:right}
 .lch button{padding:8px 12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);
   font:inherit;font-size:13px;cursor:pointer}
 .lch button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lf.err .lch button{border-color:#c0392b}
 .lhp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .lgo{width:100%;margin-top:6px;padding:16px;background:var(--gold);color:#18181a;border:0;
   font:inherit;font-weight:700;font-size:16px;cursor:pointer}
@@ -335,7 +340,7 @@ dd{margin:0;font-weight:600;font-size:14.5px;text-align:right}
 </style></head><body>
 
 <header class="hero" id="hero">
-  <div class="bgwrap" id="hbg"><img class="bg" src="img/00476.webp" alt=""><img class="bg" src="img/00477.webp" alt=""><img class="bg" src="img/00478.webp" alt=""><img class="bg" src="img/00479.webp" alt=""></div>
+  <div class="bgwrap" id="hbg"><picture><source media="(orientation: portrait)" srcset="img/hero1-t.webp"><img class="bg" src="img/hero1-y.webp" alt="" fetchpriority="high"></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero2-t.webp"><img class="bg" data-src="img/hero2-y.webp" alt=""></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero3-t.webp"><img class="bg" data-src="img/hero3-y.webp" alt=""></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero4-t.webp"><img class="bg" data-src="img/hero4-y.webp" alt=""></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero5-t.webp"><img class="bg" data-src="img/hero5-y.webp" alt=""></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero6-t.webp"><img class="bg" data-src="img/hero6-y.webp" alt=""></picture></div>
   <div class="veil"></div>
   <div class="dots" id="dots"></div>
   <div class="in">
@@ -755,6 +760,11 @@ if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
 }
 
 render();paintSel();fromHash();
+</script><script>
+window.addEventListener('load',function(){
+  document.querySelectorAll('.hero [data-srcset]').forEach(function(s){s.srcset=s.dataset.srcset;});
+  document.querySelectorAll('.hero img[data-src]').forEach(function(i){i.src=i.dataset.src;});
+});
 </script>
 <div class="lbar" id="lbar"><a class="lcall" id="lcall" href="#" aria-label="Qo'ng'iroq qilish"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="m">Qo'ng'iroq</span><span class="d">Qo'ng'iroq qilish</span></a><button class="lbtn" id="lbtn" type="button">Ariza qoldirish <span class="ar">&rarr;</span></button></div>
 <div class="lead" id="lead" role="dialog" aria-modal="true" aria-labelledby="lh"><div class="lw" id="lw"></div></div>
@@ -762,7 +772,11 @@ render();paintSel();fromHash();
 <script>
 (function(){
 const C=window.LEAD_CFG||{};
-const LK='kafel_lead_me', MK='kafel_manba';
+const LK='kafel_lead_me', MK='kafel_manba', SK='kafel_lead_sent';
+if(document.documentElement.classList.contains('xodim'))return;   /* xodimlar: forma yo'q */
+let SENT=false;
+try{const t=+localStorage.getItem(SK);SENT=t>0&&(Date.now()-t)<30*864e5;}catch(e){}
+const PENDING=new Set();
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const num=v=>String(v).replace('.',',');
@@ -824,7 +838,16 @@ function addCur(){
   if(typeof cur==='undefined'||!cur||SEL.has(cur.id))return;
   SEL.add(cur.id);saveSel();paintSel();
   const st=grid.querySelector('.card[data-id="'+cur.id+'"] .star');if(st)st.classList.add('on');
+  if(!SENT)PENDING.add(cur.id);
 }
+function undoPending(){
+  if(!PENDING.size)return;
+  PENDING.forEach(id=>{SEL.delete(id);delete QTY[id];
+    const st=grid.querySelector('.card[data-id="'+id+'"] .star');if(st)st.classList.remove('on');});
+  PENDING.clear();saveSel();paintSel();
+  toast('Plita tanlanmadi — tanlash uchun ariza qoldiring');
+}
+const forced=()=>!SENT&&PENDING.size>0;
 
 /* --- telefon --- */
 function digits(v){let d=String(v).replace(/\D/g,'');if(d.length>9&&d.indexOf('998')===0)d=d.slice(3);return d.slice(0,9);}
@@ -838,9 +861,11 @@ const L=document.getElementById('lead'), LW=document.getElementById('lw');
 function me(){try{return JSON.parse(localStorage.getItem(LK)||'{}');}catch(e){return {};}}
 function selHTML(){
   const it=items();
+  const lk=forced()?'':null;
   if(!it.length)return '<div class="lsel"><div class="h">Tanlangan plitalar<a data-l="pick">Katalogdan tanlash</a></div>'+
     '<div class="e">Hali plita tanlanmagan. Bu shart emas — mutaxassisimiz tanlashga yordam beradi.</div></div>';
-  return '<div class="lsel"><div class="h">Tanlangan plitalar · '+it.length+' ta<a data-l="edit">O\'zgartirish</a></div><ul>'+
+  return '<div class="lsel"><div class="h">Tanlangan plitalar · '+it.length+' ta'+
+    (lk===''?'':'<a data-l="edit">O\'zgartirish</a>')+'</div><ul>'+
     it.map(x=>'<li><img src="'+x.menu+'" alt=""><div><b>'+esc(x.kod)+'</b> <span>'+esc(x.olcham)+
       (x.m2?' · '+num(x.m2)+' m²':'')+'</span></div></li>').join('')+'</ul></div>';
 }
@@ -848,7 +873,9 @@ function formHTML(){
   const m=me();
   return '<button class="lx" data-l="x" type="button" aria-label="Yopish">&times;</button>'+
   '<h3 class="serif" id="lh">Ariza qoldirish</h3>'+
-  '<p class="ls">Mutaxassisimiz siz bilan bog\'lanib, narx, mavjudlik va yetkazib berish haqida ma\'lumot beradi.</p>'+
+  '<p class="ls">'+(forced()
+    ?'Tanlagan plitangiz narxi va mavjudligini bilish uchun ma\'lumotlaringizni qoldiring — mutaxassisimiz siz bilan bog\'lanadi.'
+    :'Mutaxassisimiz siz bilan bog\'lanib, narx, mavjudlik va yetkazib berish haqida ma\'lumot beradi.')+'</p>'+
   selHTML()+
   '<form id="lform" novalidate>'+
   '<div class="lf" id="f_ism"><label for="l_ism">Ismingiz</label>'+
@@ -860,9 +887,9 @@ function formHTML(){
   '<div class="lf" id="f_vil"><label for="l_vil">Viloyatingiz</label><select id="l_vil"><option value="">Tanlang…</option>'+
     (C.viloyatlar||[]).map(v=>'<option'+(m.viloyat===v?' selected':'')+'>'+esc(v)+'</option>').join('')+
     '</select><div class="em">Viloyatni tanlang</div></div>'+
-  '<div class="lf"><label>Qaysi xona uchun? <i>— ixtiyoriy</i></label><div class="lch">'+
+  '<div class="lf" id="f_xona"><label>Qaysi xona uchun?</label><div class="lch">'+
     (C.xonalar||[]).map(x=>'<button type="button" data-x="'+esc(x)+'"'+(XONA.has(x)?' class="on"':'')+'>'+esc(x)+'</button>').join('')+
-    '</div></div>'+
+    '</div><div class="em">Kamida bittasini tanlang</div></div>'+
   '<input class="lhp" id="l_hp" tabindex="-1" autocomplete="off" aria-hidden="true">'+
   '<button class="lgo" id="lgo" type="submit">Yuborish</button>'+
   '<div class="lerr" id="lerr"></div>'+
@@ -893,6 +920,7 @@ function openLead(){
   try{if(window.fbq)fbq('trackCustom','ArizaFormasi');}catch(e){}
 }
 function closeLead(){
+  if(forced())undoPending();
   L.classList.remove('vis');
   setTimeout(()=>{L.classList.remove('on');
     if(!det.classList.contains('on'))document.body.style.overflow='';},300);
@@ -912,7 +940,8 @@ L.addEventListener('click',e=>{
     else if(k==='pick'){closeLead();if(det.classList.contains('on')&&typeof close_==='function')close_();}
     return;}
   const x=e.target.closest('[data-x]');
-  if(x){const v=x.dataset.x;XONA.has(v)?XONA.delete(v):XONA.add(v);x.classList.toggle('on');}
+  if(x){const v=x.dataset.x;XONA.has(v)?XONA.delete(v):XONA.add(v);x.classList.toggle('on');
+    const f=x.closest('.lf');if(f)f.classList.remove('err');}
 });
 L.addEventListener('input',e=>{
   if(e.target.id==='l_tel')e.target.value=fmtTel(digits(e.target.value));
@@ -938,6 +967,8 @@ function preview(P){
   return R.join('\n');
 }
 function done(P,test){
+  SENT=true;PENDING.clear();
+  try{localStorage.setItem(SK,String(Date.now()));}catch(e){}
   if(!test)px('Lead',{content_name:'Katalog arizasi',num_items:P.mahsulotlar.length});
   LW.innerHTML='<button class="lx" data-l="x" type="button" aria-label="Yopish">&times;</button>'+
     '<div class="lok"><div class="ic">&#10003;</div><h3 class="serif">Rahmat, '+esc(P.ism)+'!</h3>'+
@@ -953,8 +984,9 @@ async function send(){
   const ism=$('#l_ism').value.trim(), tel=digits($('#l_tel').value), vil=$('#l_vil').value;
   let ok=true;
   const bad=(id,b)=>{document.getElementById(id).classList.toggle('err',b);if(b)ok=false;};
-  bad('f_ism',ism.length<2);bad('f_tel',tel.length!==9);bad('f_vil',!vil);
-  if(!ok){const f=L.querySelector('.lf.err input,.lf.err select');if(f)f.focus();return;}
+  bad('f_ism',ism.length<2);bad('f_tel',tel.length!==9);bad('f_vil',!vil);bad('f_xona',!XONA.size);
+  if(!ok){const f=L.querySelector('.lf.err input,.lf.err select');if(f)f.focus();
+    else{const e=L.querySelector('.lf.err');if(e)e.scrollIntoView({block:'center',behavior:'smooth'});}return;}
   const P={ism:ism,tel:'+998'+tel,viloyat:vil,xona:[...XONA],
     mahsulotlar:items().map(x=>({kod:x.kod,olcham:x.olcham,sirt:x.sirt,m2:x.m2,dona:x.dona})),
     manba:SRC.s||"to'g'ridan-to'g'ri",kampaniya:SRC.c||'',
@@ -988,6 +1020,16 @@ const prow=document.querySelector('#panel .prow');
 if(prow){const b=document.createElement('button');b.type='button';b.className='lpq';
   b.textContent='Shu plitalarga ariza qoldirish';
   b.onclick=()=>{closePanel();openLead();};prow.before(b);}
+function gate(id){if(SENT)return;PENDING.add(id);openLead();}
+const _tg=toggle;
+toggle=function(id){const had=SEL.has(id);_tg(id);if(!had&&SEL.has(id))gate(id);};
+const _bc=bindCalc;
+bindCalc=function(d){
+  _bc(d);
+  const ad=document.getElementById('cadd');
+  if(ad&&ad.onclick){const o=ad.onclick;
+    ad.onclick=function(){const had=SEL.has(d.id);o.call(this);if(!had&&SEL.has(d.id))gate(d.id);};}
+};
 const _open=open_;
 open_=function(id,nh){
   _open(id,nh);

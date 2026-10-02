@@ -217,10 +217,13 @@ dd{margin:0;font-weight:600;font-size:14.5px;text-align:right}
 .foot{border-top:1px solid var(--line);padding:26px 24px;color:var(--soft);font-size:13px}
 .foot .in{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.hero .bg{transform:scale(1.02)}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.08)}}
 </style></head><body>
 
 <header class="hero" id="hero">
-  <div class="bgwrap" id="hbg"><img class="bg" src="img/00476.webp" alt=""><img class="bg" src="img/00477.webp" alt=""><img class="bg" src="img/00478.webp" alt=""><img class="bg" src="img/00479.webp" alt=""></div>
+  <div class="bgwrap" id="hbg"><picture><source media="(orientation: portrait)" srcset="img/hero1-t.webp"><img class="bg" src="img/hero1-y.webp" alt="" fetchpriority="high"></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero2-t.webp"><img class="bg" data-src="img/hero2-y.webp" alt=""></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero3-t.webp"><img class="bg" data-src="img/hero3-y.webp" alt=""></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero4-t.webp"><img class="bg" data-src="img/hero4-y.webp" alt=""></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero5-t.webp"><img class="bg" data-src="img/hero5-y.webp" alt=""></picture><picture><source media="(orientation: portrait)" data-srcset="img/hero6-t.webp"><img class="bg" data-src="img/hero6-y.webp" alt=""></picture></div>
   <div class="veil"></div>
   <div class="dots" id="dots"></div>
   <div class="in">
@@ -640,4 +643,9 @@ if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
 }
 
 render();paintSel();fromHash();
+</script><script>
+window.addEventListener('load',function(){
+  document.querySelectorAll('.hero [data-srcset]').forEach(function(s){s.srcset=s.dataset.srcset;});
+  document.querySelectorAll('.hero img[data-src]').forEach(function(i){i.src=i.dataset.src;});
+});
 </script></body></html>
