@@ -768,7 +768,7 @@ window.addEventListener('load',function(){
 </script>
 <div class="lbar" id="lbar"><a class="lcall" id="lcall" href="#" aria-label="Qo'ng'iroq qilish"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="m">Qo'ng'iroq</span><span class="d">Qo'ng'iroq qilish</span></a><button class="lbtn" id="lbtn" type="button">Ariza qoldirish <span class="ar">&rarr;</span></button></div>
 <div class="lead" id="lead" role="dialog" aria-modal="true" aria-labelledby="lh"><div class="lw" id="lw"></div></div>
-<script>window.LEAD_CFG={"endpoint": "", "pixel": "", "tel": [], "phoneSvg": "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z\"/></svg>", "viloyatlar": ["Toshkent shahri", "Toshkent viloyati", "Andijon viloyati", "Buxoro viloyati", "Farg'ona viloyati", "Jizzax viloyati", "Xorazm viloyati", "Namangan viloyati", "Navoiy viloyati", "Qashqadaryo viloyati", "Samarqand viloyati", "Sirdaryo viloyati", "Surxondaryo viloyati", "Qoraqalpog'iston Respublikasi"], "xonalar": ["Vannaxona", "Oshxona", "Zal", "Koridor", "Hovli", "Tijorat obyekti"]};</script>
+<script>window.LEAD_CFG={"endpoint": "https://script.google.com/macros/s/AKfycbxF0Y1ctj7N0ztaUaOx9ysidi23YGovAcFaqUIpnLknzt9DNkiU90vk-7De87PF27Nl/exec?lead=1", "pixel": "", "tel": [{"nom": "Call-markaz", "raqam": "+998778329999"}], "phoneSvg": "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z\"/></svg>", "viloyatlar": ["Toshkent shahri", "Toshkent viloyati", "Andijon viloyati", "Buxoro viloyati", "Farg'ona viloyati", "Jizzax viloyati", "Xorazm viloyati", "Namangan viloyati", "Navoiy viloyati", "Qashqadaryo viloyati", "Samarqand viloyati", "Sirdaryo viloyati", "Surxondaryo viloyati", "Qoraqalpog'iston Respublikasi"], "xonalar": ["Vannaxona", "Oshxona", "Zal", "Koridor", "Hovli", "Tijorat obyekti"]};</script>
 <script>
 (function(){
 const C=window.LEAD_CFG||{};
@@ -823,7 +823,7 @@ function callTrack(n){
   if(C.endpoint&&navigator.sendBeacon){try{navigator.sendBeacon(C.endpoint,JSON.stringify({
     tur:'qongiroq',nom:n.nom,raqam:n.show,
     plita:(det.classList.contains('on')&&cur)?cur.kod:'',
-    manba:SRC.s||"to'g'ridan-to'g'ri",kampaniya:SRC.c||''}));}catch(e){}}
+    manba:SRC.s||"to'g'ridan-to'g'ri",kampaniya:SRC.c||'',sahifa:location.href.split('#')[0]}));}catch(e){}}
 }
 
 /* --- tanlangan plitalar --- */
@@ -995,18 +995,40 @@ async function send(){
   if(!C.endpoint){done(P,true);return;}
   const btn=$('#lgo'),er=$('#lerr');er.style.display='none';
   busy=true;btn.disabled=true;btn.textContent='Yuborilmoqda…';
-  try{
-    const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),20000);
-    const r=await fetch(C.endpoint,{method:'POST',body:JSON.stringify(P),signal:ac.signal});
-    clearTimeout(tm);
-    let j={};try{j=await r.json();}catch(e){}
-    if(!r.ok||j.ok===false)throw new Error(j.error||('HTTP '+r.status));
-    done(P,false);
-  }catch(err){
-    er.textContent='Ariza yuborilmadi. Internetni tekshirib, qayta urinib ko\'ring.';
-    er.style.display='block';btn.disabled=false;btn.textContent='Qayta yuborish';
-  }finally{busy=false;}
+  /* Server (Google) javobi 5–15 soniya olishi mumkin. Ariza serverga 1 soniyada yetib boradi va
+     sahifa yopilsa ham u yerda yoziladi — shuning uchun 2.5 soniyadan keyin "qabul qilindi" ko'rsatiladi,
+     javob esa orqa fonda kutiladi. Yetib bormagan ariza saqlab qo'yiladi va keyinroq qayta yuboriladi
+     (server bir xil arizani ikki marta yozmaydi). */
+  let shown=false;
+  const tm=setTimeout(()=>{shown=true;busy=false;done(P,false);},2500);
+  const res=await deliver(JSON.stringify(P));
+  clearTimeout(tm);busy=false;
+  if(res==='ok'){qDel();if(!shown)done(P,false);return;}
+  if(shown){qPut(P);setTimeout(qFlush,20000);return;}
+  er.textContent='Ariza yuborilmadi. Internetni tekshirib, qayta urinib ko\'ring.';
+  er.style.display='block';btn.disabled=false;btn.textContent='Qayta yuborish';
 }
+/* 'ok' — yetib bordi; 'bad' — server rad etdi; 'net' — internet yo'q */
+async function deliver(body){
+  const post=(o,ms)=>{const ac=new AbortController(),t=setTimeout(()=>ac.abort(),ms);
+    return fetch(C.endpoint,Object.assign({method:'POST',body:body,signal:ac.signal},o)).finally(()=>clearTimeout(t));};
+  let r;
+  try{r=await post({},60000);}
+  catch(e){try{await post({mode:'no-cors'},30000);return 'ok';}catch(e2){return 'net';}}
+  let j={};try{j=await r.json();}catch(e){}
+  return (!r.ok||j.ok===false)?'bad':'ok';
+}
+const QK=LK+'_navbat';
+function qPut(P){try{localStorage.setItem(QK,JSON.stringify({t:Date.now(),p:P}));}catch(e){}}
+function qDel(){try{localStorage.removeItem(QK);}catch(e){}}
+async function qFlush(){
+  let q=null;try{q=JSON.parse(localStorage.getItem(QK)||'null');}catch(e){}
+  if(!q||!q.p||!C.endpoint)return;
+  if(Date.now()-q.t>3*864e5){qDel();return;}
+  const r=await deliver(JSON.stringify(q.p));
+  if(r!=='net')qDel();
+}
+setTimeout(qFlush,3000);
 
 /* --- tugmalar --- */
 document.getElementById('lbtn').onclick=()=>{if(det.classList.contains('on'))addCur();openLead();};
