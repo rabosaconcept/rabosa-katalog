@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RABOSA concept — Narxlar</title>
+<meta name="theme-color" content="#18181a">
+<link rel="icon" href="icon192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#18181a;--soft:#6b6965;--line:#e4e2de;--gold:#be9e70;--panel:#f7f6f4}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#ecebe7;--soft:#a3a19c;--line:#2e2d2a;--panel:#1d1d1b}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;
+  -webkit-text-size-adjust:100%}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+header{background:#18181a;color:#d8d2c7;padding:48px 20px 40px;text-align:center}
+header img{width:min(300px,70vw);height:auto;display:block;margin:0 auto}
+header .rule{width:56px;height:1px;background:var(--gold);margin:22px auto 18px}
+header .t{margin:0;font-size:12.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+header .s{margin:8px 0 0;font-size:14.5px;text-wrap:balance}
+main{max-width:760px;margin:0 auto;padding:26px 20px 10px}
+.note{font-size:13px;color:var(--soft);display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.note i{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
+.head{display:grid;grid-template-columns:64px minmax(0,1fr) auto 22px;gap:16px;padding:0 4px 10px;
+  border-bottom:1.5px solid var(--ink);font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--soft)}
+.head span:nth-child(3){text-align:right}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;display:grid;grid-template-columns:64px minmax(0,1fr) auto 22px;gap:16px;
+  align-items:center;min-height:96px;padding:6px 4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+summary::-webkit-details-marker{display:none}
+summary:hover .sz b,summary:focus-visible .sz b{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.shape{height:84px;display:flex;align-items:flex-end;justify-content:center}
+.shape i{display:block;border:1.5px solid var(--gold);background:rgba(190,158,112,.10)}
+.sz b{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,8vw,38px);line-height:1}
+.sz b small{font-family:'Archivo',system-ui,sans-serif;font-size:14px;color:var(--soft);margin-left:4px}
+.sz em{display:block;font-style:normal;font-size:13px;color:var(--soft);margin-top:6px}
+.pr{text-align:right;white-space:nowrap}
+.pr b{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(38px,10vw,50px);line-height:1}
+.pr small{display:block;font-size:13px;color:var(--soft);margin-top:2px}
+.pr .dan{font-size:13px;color:var(--soft);margin-right:4px}
+.chev{width:22px;height:22px;color:var(--soft);transition:transform .25s}
+details[open] .chev{transform:rotate(90deg)}
+.models{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:18px 14px;padding:8px 4px 26px}
+.m{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--ink);text-align:center}
+.m .ph{height:190px;display:flex;align-items:flex-end;justify-content:center;width:100%}
+.m img{max-height:190px;max-width:100%;width:auto;border:1px solid var(--line);display:block;
+  transition:transform .3s,box-shadow .3s,border-color .3s}
+.m:hover img,.m:focus-visible img{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.16);border-color:var(--gold)}
+.m:focus-visible{outline:none}
+.m b{font-size:12.5px;font-weight:600;margin-top:9px;word-break:break-all}
+.m span{font-size:12px;color:var(--soft)}
+.lock{padding:28px 20px;border:1px solid var(--line);text-align:center;color:var(--soft);font-size:14.5px;line-height:1.6}
+footer{max-width:760px;margin:0 auto;padding:22px 20px 48px;font-size:13px;color:var(--soft);line-height:1.6}
+footer b{color:var(--ink);font-weight:600}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;margin:18px 0 0;padding:15px 18px;
+  background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px}
+.cta:hover{opacity:.9}
+@media (max-width:420px){
+  summary,.head{grid-template-columns:48px minmax(0,1fr) auto 18px;gap:12px}
+  .shape{height:72px}
+  .models{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 10px}
+  .m .ph{height:170px}.m img{max-height:170px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<header>
+  <img src="logo-oltin.png" alt="RABOSA concept">
+  <div class="rule"></div>
+  <p class="t">Narxlar ro'yxati</p>
+  <p class="s">Keramogranit plitalar · qurilish kompaniyalari uchun</p>
+</header>
+<main id="main">
+  <p class="note" id="note"><i></i><span>Yuklanmoqda…</span></p>
+  <div id="list"></div>
+</main>
+<footer id="foot" hidden>
+  <div><b>Narxlar 1 m² uchun, AQSh dollarida</b><br><span id="sana"></span>
+  O'lchamni bosing — shu o'lchamdagi modellar ochiladi. Modelni bossangiz, uning rasmlari va xona hisoblagichi ochiladi.</div>
+  <a class="cta" href="hamkor.html">To'liq katalog — rasmlar va hisoblagich <span aria-hidden="true">&rarr;</span></a>
+</footer>
+<script src="data.js?v=20261021"></script>
+<script src="narx.js?v=AVok0BKe"></script>
+<script>
+(async function(){
+const K='kafel_narx_k', NX=window.__NX, D=window.__D||[];
+let k=null;
+try{k=new URLSearchParams(location.search).get('k');
+  if(k)localStorage.setItem(K,k);else k=localStorage.getItem(K);}catch(e){}
+const note=document.getElementById('note'), list=document.getElementById('list');
+const b64=s=>{s=String(s).replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
+  return Uint8Array.from(atob(s),c=>c.charCodeAt(0));};
+const fm=x=>{const r=Math.round(x*100)/100,i=Math.abs(r-Math.round(r))<0.005;
+  const p=(i?String(Math.round(r)):r.toFixed(2)).split('.');
+  return '$'+p[0].replace(/\B(?=(\d{3})+(?!\d))/g,' ')+(p[1]?','+p[1]:'');};
+const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e;};
+let INFO=null;
+if(NX&&k&&window.crypto&&crypto.subtle){
+  try{const key=await crypto.subtle.importKey('raw',b64(k),'AES-GCM',false,['decrypt']);
+    const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(NX.iv)},key,b64(NX.ct));
+    INFO=JSON.parse(new TextDecoder().decode(pt));}
+  catch(e){try{localStorage.removeItem(K);}catch(_){}}
+}
+if(!INFO){
+  note.remove();
+  const d=el('div','lock');d.textContent='Narxlarni ko\'rish uchun sizga yuborilgan havolani to\'liq oching.';
+  list.appendChild(d);return;
+}
+const P=INFO.p||{};
+const m=String(INFO.sana||'').match(/^(\d{4})-(\d\d)-(\d\d)$/);
+const sana=m?m[3]+'.'+m[2]+'.'+m[1]:'';
+note.lastChild.textContent='Narxlar 1 m² uchun, AQSh dollarida'+(sana?' · '+sana+' holatiga':'');
+document.getElementById('sana').textContent=sana?sana+' holatiga. ':'';
+document.getElementById('foot').hidden=false;
+
+const G=new Map();
+D.forEach(d=>{if(!G.has(d.qisqa))G.set(d.qisqa,[]);G.get(d.qisqa).push(d);});
+const rows=[...G.entries()].map(([q,arr])=>{
+  const n=(q.match(/\d+/g)||[]).map(Number), pr=arr.map(d=>P[d.kod]).filter(v=>v!=null).map(Number);
+  return {q,arr,a:n[0]||0,b:n[1]||0,min:pr.length?Math.min(...pr):null,max:pr.length?Math.max(...pr):null};
+}).sort((x,y)=>((x.min??1e9)-(y.min??1e9))||(x.a*x.b-y.a*y.b));
+
+const head=el('div','head');['','O\'lcham','Narxi · 1 m²',''].forEach(t=>head.appendChild(el('span','',t)));
+list.appendChild(head);
+const S=0.46;
+rows.forEach(r=>{
+  const det=el('details'), sum=el('summary');
+  const sh=el('span','shape'), i=el('i');sh.setAttribute('aria-hidden','true');
+  const L=Math.max(r.a,r.b), W=Math.min(r.a,r.b);
+  i.style.width=Math.round(W*S)+'px';i.style.height=Math.round(L*S)+'px';sh.appendChild(i);
+  const sz=el('span','sz'), b=el('b','',r.a+' × '+r.b+' ');b.appendChild(el('small','','sm'));
+  sz.appendChild(b);sz.appendChild(el('em','',r.arr.length+' ta model'));
+  const pr=el('span','pr');
+  if(r.min==null){pr.appendChild(el('b','','—'));pr.appendChild(el('small','','narxini so\'rang'));}
+  else{if(r.max>r.min)pr.appendChild(el('span','dan','dan'));
+    pr.appendChild(el('b','',fm(r.min)));pr.appendChild(el('small','','/ m²'));}
+  const ch=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  ch.setAttribute('viewBox','0 0 24 24');ch.setAttribute('class','chev');ch.setAttribute('aria-hidden','true');
+  ch.innerHTML='<path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+  [sh,sz,pr,ch].forEach(x=>sum.appendChild(x));det.appendChild(sum);
+  const g=el('div','models');
+  r.arr.forEach(d=>{
+    const a=el('a','m');a.href='hamkor.html#'+encodeURIComponent(d.kod);
+    const v=P[d.kod];a.setAttribute('aria-label',d.kod+', '+d.sirt+(v!=null?', '+fm(v)+' 1 m²':''));
+    const ph=el('span','ph'), im=el('img');im.loading='lazy';im.alt='';im.src=d.menu;ph.appendChild(im);
+    a.appendChild(ph);a.appendChild(el('b','',d.kod));a.appendChild(el('span','',d.sirt));
+    if(r.max>r.min&&v!=null)a.appendChild(el('span','',fm(v)+' / m²'));
+    g.appendChild(a);
+  });
+  det.appendChild(g);list.appendChild(det);
+});
+})();
+</script>
+</body></html>
