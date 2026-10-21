@@ -20,8 +20,10 @@ header .rule{width:56px;height:1px;background:var(--gold);margin:22px auto 18px}
 header .t{margin:0;font-size:12.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
 header .s{margin:8px 0 0;font-size:14.5px;text-wrap:balance}
 main{max-width:760px;margin:0 auto;padding:26px 20px 10px}
-.note{font-size:13px;color:var(--soft);display:flex;gap:10px;align-items:center;margin:0 0 14px}
-.note i{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
+.huquq{border:1px solid var(--gold);background:rgba(190,158,112,.08);padding:16px 18px;margin:0 0 24px;
+  font-size:14px;line-height:1.6;color:var(--ink)}
+.huquq p{margin:0}.huquq b{font-weight:600}
+.huquq .d{margin-top:6px;font-size:12.5px;color:var(--soft)}
 .head{display:grid;grid-template-columns:64px minmax(0,1fr) auto 22px;gap:16px;padding:0 4px 10px;
   border-bottom:1.5px solid var(--ink);font-size:11px;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;color:var(--soft)}
@@ -73,16 +75,18 @@ footer b{color:var(--ink);font-weight:600}
   <p class="s">Keramogranit plitalar · qurilish kompaniyalari uchun</p>
 </header>
 <main id="main">
-  <p class="note" id="note"><i></i><span>Yuklanmoqda…</span></p>
+  <div class="huquq" id="note" hidden>
+    <p><b>Narxlar 1 m² uchun, AQSh dollarida ko'rsatilgan.</b> To'lov O'zbekiston Respublikasi milliy valyutasi — so'mda, to'lov kunidagi O'zbekiston Respublikasi Markaziy banki rasmiy kursi bo'yicha amalga oshiriladi.</p>
+    <p class="d" id="sana1"></p>
+  </div>
   <div id="list"></div>
 </main>
 <footer id="foot" hidden>
-  <div><b>Narxlar 1 m² uchun, AQSh dollarida</b><br><span id="sana"></span>
-  O'lchamni bosing — shu o'lchamdagi modellar ochiladi. Modelni bossangiz, uning rasmlari va xona hisoblagichi ochiladi.</div>
+  <div>O'lchamni bosing — shu o'lchamdagi modellar ochiladi. Modelni bossangiz, uning rasmlari va xona hisoblagichi ochiladi.</div>
   <a class="cta" href="hamkor.html">To'liq katalog — rasmlar va hisoblagich <span aria-hidden="true">&rarr;</span></a>
 </footer>
 <script src="data.js?v=20261021"></script>
-<script src="narx.js?v=AVok0BKe"></script>
+<script src="narx.js?v=3Y4ySAum"></script>
 <script>
 (async function(){
 const K='kafel_narx_k', NX=window.__NX, D=window.__D||[];
@@ -111,8 +115,8 @@ if(!INFO){
 const P=INFO.p||{};
 const m=String(INFO.sana||'').match(/^(\d{4})-(\d\d)-(\d\d)$/);
 const sana=m?m[3]+'.'+m[2]+'.'+m[1]:'';
-note.lastChild.textContent='Narxlar 1 m² uchun, AQSh dollarida'+(sana?' · '+sana+' holatiga':'');
-document.getElementById('sana').textContent=sana?sana+' holatiga. ':'';
+note.hidden=false;
+document.getElementById('sana1').textContent=sana?sana+' holatiga':'';
 document.getElementById('foot').hidden=false;
 
 const G=new Map();

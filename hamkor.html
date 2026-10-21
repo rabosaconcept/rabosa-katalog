@@ -665,7 +665,7 @@ window.addEventListener('load',function(){
   document.querySelectorAll('.hero [data-srcset]').forEach(function(s){s.srcset=s.dataset.srcset;});
   document.querySelectorAll('.hero img[data-src]').forEach(function(i){i.src=i.dataset.src;});
 });
-</script><script src="narx.js?v=AVok0BKe"></script>
+</script><script src="narx.js?v=3Y4ySAum"></script>
 <script>
 (function(){
 const NX=window.__NX, K='kafel_narx_k';
@@ -740,6 +740,7 @@ function panel(){
       (bez?' <i>(narxi yo\'q '+bez+' ta plitasiz)</i>':'')+'</span>':''):'';
   const out=document.getElementById('out');
   if(out)out.value=BRANDN+'\nNarxlar 1 m² uchun, AQSh dollarida'+(INFO&&INFO.sana?' · '+sana(INFO.sana)+' holatiga':'')+
+    '\nTo\'lov O\'zbekiston Respublikasi milliy valyutasi — so\'mda, to\'lov kunidagi O\'zbekiston Respublikasi Markaziy banki rasmiy kursi bo\'yicha amalga oshiriladi.'+
     '\n'+arr.length+' ta mahsulot\n\n'+lines.join('\n')+
     (tp?'\n\nJami: '+tp+' dona · '+n2(tm)+' m²'+(sum?'\nTaxminiy narx: '+fm(sum):''):'');
 }
@@ -760,7 +761,7 @@ function sana(s){const m=String(s||'').match(/^(\d{4})-(\d\d)-(\d\d)$/);return m
   if(!ok){note.classList.add('lock');
     note.innerHTML='<span class="dot"></span>Narxlarni ko\'rish uchun sizga yuborilgan havolani to\'liq oching.';return;}
   note.innerHTML='<span class="dot"></span><span><b>Narxlar</b> 1 m² uchun, AQSh dollarida'+
-    (INFO.sana?' · '+sana(INFO.sana)+' holatiga':'')+'</span>';
+    (INFO.sana?' · '+sana(INFO.sana)+' holatiga':'')+'. To\'lov O\'zbekiston Respublikasi milliy valyutasi — so\'mda, to\'lov kunidagi O\'zbekiston Respublikasi Markaziy banki rasmiy kursi bo\'yicha amalga oshiriladi.</span>';
   cards();paintSel();   /* render() emas: kartochkalar qayta chizilsa ko'rinmay qoladi */
   if(det.classList.contains('on'))detail();
 })();
